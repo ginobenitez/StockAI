@@ -3,7 +3,8 @@
 import PySimpleGUI as sg
 import ai as ai
 
-score = ai.accuracy()
+
+
 layout = [[sg.Text("StockAI")],[sg.Button("OK")]]
 
 # Create the window
