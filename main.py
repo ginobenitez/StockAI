@@ -4,7 +4,6 @@ import PySimpleGUI as sg
 import ai as ai
 
 
-
 layout = [[sg.Text("StockAI")],[sg.Button("OK")]]
 
 # Create the window
