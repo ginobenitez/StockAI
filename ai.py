@@ -100,7 +100,7 @@ def accuracy():
 
         currCompany = currCompany.dropna()
 
-    model = RFC(n_estimators = 200, min_samples_split = 50, random_state = 1)
+    model = RFC(n_estimators = 100, min_samples_split = 100, random_state = 1)
 
     predictions = backtest(currCompany, model, new_predictors)
 
