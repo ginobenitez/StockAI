@@ -89,4 +89,3 @@ def plot_historical_data(ticker):
 
     except Exception as e:
         print("Error fetching data for company, please check again")
-        
