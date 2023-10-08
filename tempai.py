@@ -1,5 +1,3 @@
-# Just so I don't lose my progress, don't mind this file too much...
-
 import yfinance as yf
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier as RFC
@@ -92,12 +90,12 @@ def plot_historical_data(ticker):
 
 if __name__ == "__main__":
     # Call the stock_price_prediction function
-    companyName = input("Enter the company Ticker name: ")
+    companyTicker = input("Enter the company Ticker name: ")
     
-    predictions, precision = stock_price_prediction(companyName)
+    predictions, precision = stock_price_prediction(companyTicker)
 
     # Display the predictions and precision score
-    print(f"Predictions for {companyName}:")
+    print(f"Predictions for {companyTicker}:")
     print(predictions)
     print("\nEstimated Precision Score (Not Actual):", precision)
-    
+    plot_historical_data(companyTicker)
