@@ -1,26 +1,41 @@
-# hello_psg.py
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+import ai
+import yfinance as yf
 
-import PySimpleGUI as sg
-import ai as ai
+def predict_stock():
+    ticker = entry.get()
+    if not ticker:
+        messagebox.showerroe("Error", "Please enter a ticker symbol")
+        return
+    
+    try:
+        predictions, precision = ai.stock_price_prediction(ticker)
+        result_label.config(text=f"Predictions for {ticker}:\n{predictions}\n\nEstimated Precision Score (Not Actual): {precision}")
+        ai.plot_historical_data(ticker)
+    except Exception as e:
+        messagebox.showerror("Error", f"Error fetching data: {str(e)}")
 
+# Create the main window
+root = tk.Tk()
+root.title("Stock Price Prediction App")
 
+# Create and pack widgets
+frame = ttk.Frame(root)
+frame.pack(padx=20, pady=20)
 
-layout = [[sg.Text("StockAI")],[sg.Button("OK")]]
+label = ttk.Label(frame, text="Enter Company Ticker:")
+label.pack()
 
-# Create the window
-window = sg.Window("StockAI", layout, background_color= "#313030", margins=(600, 300))
+entry = ttk.Entry(frame)
+entry.pack()
 
-# Create an event loop
-while True:
-    event, values = window.read()
-    if event == "OK":
-        print("hi")
-        #score = ai.accuracy()
-        #sg.Text(score)
-        
-    # End program if user closes window or
-    # presses the OK button
-    if event == sg.WIN_CLOSED:
-        break
+predict_button = ttk.Button(frame, text="Predict", command=predict_stock)
+predict_button.pack()
 
-window.close()
+result_label = ttk.Label(frame, text="")
+result_label.pack()
+
+# Start the Tkinter main loop
+root.mainloop()
