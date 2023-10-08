@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import ai
+import tempai as ai
 import yfinance as yf
 
 def predict_stock():
