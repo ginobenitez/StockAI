@@ -1,9 +1,14 @@
 import customtkinter as ctk
-
-
+import tempai as ai
 def search():
     stock = entry.get()
+    stock = stock.upper()
+    stock = ai.get_company_data(stock)
+    
+    predictions, precision = ai.stock_price_prediction(stock)
+    
     label = ctk.CTkLabel(scrollable, text = stock)
+    
     label.pack()
 
 

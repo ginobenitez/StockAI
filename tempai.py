@@ -15,6 +15,11 @@ def get_company_data(ticker):
         return None
 
 def stock_price_prediction(ticker):
+    
+    if (ticker == None):
+        print("Error")
+        return None
+    
     # Fetch historical stock data
     currCompany = get_company_data(ticker)
 
