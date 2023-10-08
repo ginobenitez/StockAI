@@ -21,19 +21,25 @@ def predict_stock():
 root = tk.Tk()
 root.title("Stock Price Prediction App")
 
-# Create and pack widgets
+# The following are GUI elements
+
+# Create frame
 frame = ttk.Frame(root)
 frame.pack(padx=20, pady=20)
 
+# Get the label from the user
 label = ttk.Label(frame, text="Enter Company Ticker:")
 label.pack()
 
+# Entry field from user input
 entry = ttk.Entry(frame)
 entry.pack()
 
+# Button to start prediction
 predict_button = ttk.Button(frame, text="Predict", command=predict_stock)
 predict_button.pack()
 
+# Label to display prediction results
 result_label = ttk.Label(frame, text="")
 result_label.pack()
 
