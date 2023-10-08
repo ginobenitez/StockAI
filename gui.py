@@ -6,11 +6,13 @@ def search():
     label = ctk.CTkLabel(scrollable, text = stock)
     label.pack()
 
+
 root = ctk.CTk()
 root.geometry("750x450")
 
 root.title("StockAI")
 
+ctk.set_default_color_theme("blue")
 scrollable = ctk.CTkScrollableFrame(root,
                                     width = 250,
                                     height = 100)
@@ -23,6 +25,7 @@ button_search = ctk.CTkButton(root, text="Search Stock", width=200,
                               hover_color= "#A2D6F9",
                               fg_color= "#2E5EAA", 
                               command=search)
+
 
 label_title.pack(padx = 10, pady =(40, 20))
 
