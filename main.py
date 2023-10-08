@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
+NavigationToolbar2Tk) 
 import tempai as ai
 import yfinance as yf
 
@@ -13,35 +15,44 @@ def predict_stock():
     try:
         predictions, precision = ai.stock_price_prediction(ticker)
         result_label.config(text=f"Predictions for {ticker}:\n{predictions}\n\nEstimated Precision Score (Not Actual): {precision}")
-        ai.plot_historical_data(ticker)
+        figure  = ai.plot_historical_data(ticker)
+        
+        #canvas = FigureCanvasTkAgg(figure, graph_frame)
+        #canvas.draw()
+        #canvas.get_tk_widget.pack()
+        #figure.draw() 
+  
+        # placing the canvas on the Tkinter window 
+    
+        
     except Exception as e:
         messagebox.showerror("Error", f"Error fetching data: {str(e)}")
 
 # Create the main window
 root = tk.Tk()
 root.title("Stock Price Prediction App")
+root.geometry("750x450")
 
-# The following are GUI elements
-
-# Create frame
+# Create and pack widgets
 frame = ttk.Frame(root)
-frame.pack(padx=20, pady=20)
 
-# Get the label from the user
+frame.pack(padx=20, pady=20)
+#graph_frame = ttk.Frame(root)
+
 label = ttk.Label(frame, text="Enter Company Ticker:")
 label.pack()
 
-# Entry field from user input
 entry = ttk.Entry(frame)
 entry.pack()
 
-# Button to start prediction
 predict_button = ttk.Button(frame, text="Predict", command=predict_stock)
 predict_button.pack()
 
-# Label to display prediction results
 result_label = ttk.Label(frame, text="")
+
 result_label.pack()
+
+#graph_frame.pack()
 
 # Start the Tkinter main loop
 root.mainloop()

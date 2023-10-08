@@ -89,9 +89,15 @@ def plot_historical_data(ticker):
         plt.legend()
         plt.grid()
         plt.show()
+        
+       
+        #return plt.show()
+        
 
     except Exception as e:
+        print(e.message)
         print("Error fetching data for company, please check again")
+        return None
 
 if __name__ == "__main__":
     # Call the stock_price_prediction function
