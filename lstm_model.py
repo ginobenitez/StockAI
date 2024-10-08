@@ -29,7 +29,7 @@ config = {
         "key": os.getenv("API_KEY"), # you can use the demo API key for this project, but please make sure to get your own API key at https://www.alphavantage.co/support/#api-key
         "symbol": "IBM",
         "outputsize": "full",
-        "key_adjusted_close": "5. adjusted close",
+        "key_adjusted_close": "4. close",
     },
     "data": {
         "window_size": 20,
