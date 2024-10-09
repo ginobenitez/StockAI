@@ -28,7 +28,7 @@ config = {
         "key": os.getenv("API_KEY"), # you can use the demo API key for this project, but please make sure to get your own API key at https://www.alphavantage.co/support/#api-key
         "symbol": "AAPL",
         "outputsize": "full",
-        "key_adjusted_close": "4. close",
+        "key_close": "4. close",
     },
     "data": {
         "window_size": 20,
@@ -60,12 +60,12 @@ config = {
 
 def download_data(config):
     ts = TimeSeries(os.getenv("API_KEY")) #you can use the demo API key for this project, but please make sure to eventually get your own API key at https://www.alphavantage.co/support/#api-key. 
-    data, meta_data = ts.get_daily_adjusted(config["alpha_vantage"]["symbol"], outputsize=config["alpha_vantage"]["outputsize"])
+    data, meta_data = ts.get_daily(config["alpha_vantage"]["symbol"], outputsize=config["alpha_vantage"]["outputsize"])
 
     data_date = [date for date in data.keys()]
     data_date.reverse()
 
-    data_close_price = [float(data[date][config["alpha_vantage"]["key_adjusted_close"]]) for date in data.keys()]
+    data_close_price = [float(data[date][config["alpha_vantage"]["key_close"]]) for date in data.keys()]
     data_close_price.reverse()
     data_close_price = np.array(data_close_price)
 
